@@ -1,7 +1,9 @@
 <template>
     <div class="input-item">
         <span class="left">{{ leftTitle }}</span>
-        <input class="input-field" type="text" ref="input" v-model="inputValue" @keydown.enter="onEnterKeyPressed" />
+        <span class="right">
+            <input class="input-field" type="text" ref="input" v-model="inputValue" @keydown.enter="onEnterKeyPressed" />
+        </span>
     </div>
 </template>
 

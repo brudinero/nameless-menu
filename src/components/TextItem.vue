@@ -46,5 +46,10 @@ export default {
 .text-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.text-item .right {
+    text-align: right;
 }
 </style>

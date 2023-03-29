@@ -1,7 +1,9 @@
 <template>
     <div class="menu">
         <h1>{{ menuTitle }}</h1>
-        <div v-for="(item, index) in menuItems" :key="index" :class="{ 'focused': index === focusedIndex }">
+        <div class="menu-subtitle">{{ menuSubtitle }}</div>
+        <div v-for="(item, index) in menuItems" :key="index" class="menu-item"
+            :class="{ 'focused': index === focusedIndex }">
             <text-item v-if="item.type === 'text'" :left-title="item.leftTitle" :right-title="item.rightTitle"
                 :callback="item.callback" @enter-pressed="onTextItemEnterPressed" :ref="`textItem-${index}`"></text-item>
             <list-item v-else-if="item.type === 'list'" :left-title="item.leftTitle" :numbers="item.numbers"
@@ -12,6 +14,7 @@
             <checkbox-item v-else-if="item.type === 'checkbox'" :left-title="item.leftTitle"
                 :initial-checked="item.initialChecked" :ref="`checkboxItem-${index}`" :callback="item.callback"
                 @value-change="onCheckboxItemValueChange"></checkbox-item>
+            <div v-if="item.type !== 'text' && item.type !== 'list'" class="menu-item-right"></div>
         </div>
     </div>
 </template>
@@ -48,6 +51,7 @@ export default {
     methods: {
         createMenu(menuData) {
             this.menuTitle = menuData.title;
+            this.menuSubtitle = menuData.menuSubtitle;
             this.menuItems = menuData.items.map((item, index) => {
                 if (item.type === 'list') {
                     return { ...item, refName: `listItem-${index}`, callback: item.callback };
@@ -167,6 +171,7 @@ export default {
         // Testdaten zum Testen im Browser
         const testData = {
             title: 'Inventar',
+            menuSubtitle: 'Test Subtitle',
             items: [
                 {
                     type: 'text',
@@ -213,61 +218,48 @@ export default {
 
 <style scoped>
 .focused {
-    background-color: rgba(255, 255, 100, 0.4);
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .menu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateX(45deg);
-    border: 2px solid #fff;
-    background-color: rgba(0, 0, 0, 0.75);
+    width: 400px;
+    background-color: rgba(33, 33, 33, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: perspective(2400px) rotateY(-15deg);
+    margin: 10% auto;
     padding: 10px;
-    width: 350px;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
 }
 
-.menu-title {
+.menu-subtitle {
+    color: white;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
 }
 
-.menu-items {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 350px;
-    overflow-y: scroll;
+.menu h1 {
+    color: white;
+    margin: 0 0 10px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.menu-subtitle.focused {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 0 10px;
+    margin-bottom: 5px;
+    padding: 10px;
     border-radius: 5px;
-    transition: background-color 0.2s ease;
+    color: white;
+    font-size: 20px;
     cursor: pointer;
-}
-
-.menu-item:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-
-}
-
-.menu-item.focused {}
-
-.menu-item-label {
-    flex: 1;
-}
-
-.menu-item-value {
-    flex: 0 0 auto;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid white;
+    border-width: 0 0 1px 0;
+    border-color: white;
 }
 </style>

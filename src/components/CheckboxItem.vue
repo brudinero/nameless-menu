@@ -1,7 +1,9 @@
 <template>
     <div class="checkbox-item">
         <span class="left">{{ leftTitle }}</span>
-        <input class="right" type="checkbox" v-model="isChecked" />
+        <span class="right">
+            <input class="right" type="checkbox" v-model="isChecked" />
+        </span>
     </div>
 </template>
 
