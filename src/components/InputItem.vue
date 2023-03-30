@@ -16,6 +16,12 @@ export default {
             default: '',
         },
     },
+    data() {
+        return {
+            inputValue: '',
+
+        };
+    },
 
     methods: {
         focusInput() {

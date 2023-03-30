@@ -35,11 +35,11 @@ export default {
     },
     data() {
         return {
+            menuId: '',
             menuTitle: '',
+            menuSubtitle: '',
             menuItems: [],
             focusedIndex: 0,
-
-
         };
     },
 
@@ -49,7 +49,12 @@ export default {
         }
     },
     methods: {
+        onReceiveMenuData(menuData) {
+            this.createMenu(menuData);
+        },
+
         createMenu(menuData) {
+            this.menuId = menuData.id;
             this.menuTitle = menuData.title;
             this.menuSubtitle = menuData.menuSubtitle;
             this.menuItems = menuData.items.map((item, index) => {
@@ -69,27 +74,31 @@ export default {
                 }
                 return { ...item, callback: item.callback };
             });
-            // Hier wird focusedItem aktualisiert
-            this.focusedItem = this.menuItems[this.focusedIndex];
         },
 
 
 
 
         onTextItemEnterPressed(eventData) {
-            console.log(`Test item enter pressed: ${JSON.stringify(eventData)}`);
+            console.log(`Test item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
+
+            /*
+            if ('alt' in window) {
+                alt.emit('onTextItemEnterPressed', eventData);
+            }
+            */
         },
 
         onListItemValueChange(eventData) {
-            console.log(`List item value change: ${JSON.stringify(eventData)}`);
+            console.log(`List item value change: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
         },
 
         onInputItemEnterPressed(eventData) {
-            console.log(`Input item enter pressed: ${JSON.stringify(eventData)}`);
+            console.log(`Input item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
         },
 
         onCheckboxItemValueChange(eventData) {
-            console.log(`Checkbox item enter pressed: ${JSON.stringify(eventData)}`);
+            console.log(`Checkbox item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
         },
 
         executeCallback() {
@@ -135,8 +144,6 @@ export default {
                     this.$refs[focusedItem.refName][0].toggleChecked();
                 }
 
-                this.focusedItem = focusedItem;
-
                 if (focusedItem.type === 'text') {
                     this.onTextItemEnterPressed({
                         leftTitle: focusedItem.leftTitle,
@@ -161,6 +168,12 @@ export default {
 
     created() {
         window.addEventListener('keydown', this.onKeyDown);
+
+        /*
+        if ('alt' in window) {
+            alt.on('receiveMenuData', this.onReceiveMenuData);
+        }
+        */
     },
 
     unmounted() {
@@ -170,6 +183,7 @@ export default {
     mounted() {
         // Testdaten zum Testen im Browser
         const testData = {
+            id: 'MENUTEST_1',
             title: 'Inventar',
             menuSubtitle: 'Test Subtitle',
             items: [
@@ -224,7 +238,7 @@ export default {
 
 .menu {
     width: 400px;
-    background-color: rgba(33, 33, 33, 0.8);
+    background-color: rgba(16, 16, 16, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transform: perspective(2400px) rotateY(-15deg);
