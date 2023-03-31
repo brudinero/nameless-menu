@@ -1,5 +1,7 @@
+
+
 <template>
-    <div class="menu">
+    <div v-if="showMenu" class="menu" tabindex="0">
         <h1>{{ menuTitle }}</h1>
         <div class="menu-subtitle">{{ menuSubtitle }}</div>
         <div v-for="(item, index) in menuItems" :key="index" class="menu-item"
@@ -20,6 +22,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import TextItem from './components/TextItem.vue';
 import ListItem from './components/ListItem.vue';
 import InputItem from './components/InputItem.vue';
@@ -40,6 +43,7 @@ export default {
             menuSubtitle: '',
             menuItems: [],
             focusedIndex: 0,
+            showMenu: false,
         };
     },
 
@@ -74,10 +78,13 @@ export default {
                 }
                 return { ...item, callback: item.callback };
             });
+
+            this.showMenu = true;
         },
 
-
-
+        closeMenu() {
+            this.showMenu = false;
+        },
 
         onTextItemEnterPressed(eventData) {
             console.log(`Test item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
@@ -169,18 +176,24 @@ export default {
     created() {
         window.addEventListener('keydown', this.onKeyDown);
 
-        /*
+        
         if ('alt' in window) {
-            alt.on('receiveMenuData', this.onReceiveMenuData);
+            alt.on('createMenu', this.testMenu());
+            alt.log("TestOPEN");
         }
-        */
+
+        if ('alt' in window) {
+            alt.on('closeMenu', this.closeMenu());
+            alt.log("CloseMENU");
+        }
+        
     },
 
     unmounted() {
         window.removeEventListener('keydown', this.onKeyDown);
     },
 
-    mounted() {
+    testMenu() {
         // Testdaten zum Testen im Browser
         const testData = {
             id: 'MENUTEST_1',
@@ -222,10 +235,13 @@ export default {
                 }
             ],
         };
-        this.$el.focus();
-
         this.createMenu(testData);
     },
+
+    updated() {
+        if (this.showMenu) 
+            this.$el.focus();
+    }
 
 };
 </script>
@@ -244,6 +260,10 @@ export default {
     transform: perspective(2400px) rotateY(-15deg);
     margin: 10% auto;
     padding: 10px;
+
+    position: fixed;
+    top: -5vw; 
+    right: 1vw;
 }
 
 .menu-subtitle {
