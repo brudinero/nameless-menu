@@ -16,6 +16,10 @@ export default {
         rightTitle: {
             type: String,
             default: '',
+        },
+        callback: {
+            type: String, 
+            default: '',
         }
     },
     data() {
