@@ -72,7 +72,7 @@ export default {
                     return { ...item, refName: `listItem-${index}`, callback: item.callback };
                 }
                 if (item.type === 'checkbox') {
-                    return { ...item, refName: `checkboxItem-${index}`, callback: item.callback, }; 
+                    return { ...item, refName: `checkboxItem-${index}`, callback: item.callback, };
                 }
                 if (item.type === 'input') {
                     return { ...item, refName: `inputItem-${index}`, callback: item.callback };
@@ -80,7 +80,7 @@ export default {
                 if (item.type === 'text') {
                     const id = `text-${Date.now()}-${index}`; // eindeutige ID generieren
                     const refName = `textItem-${id}`; // ref-Name mit Typ und ID generieren
-                    return { ...item, refName, callback: item.callback, }; 
+                    return { ...item, refName, callback: item.callback, };
                 }
                 return { ...item, callback: item.callback };
             });
@@ -94,9 +94,9 @@ export default {
 
         closeMenu() {
             this.$el.classList.remove('show');
-                setTimeout(() => {
-                    this.showMenu = false;
-                }, 500);
+            setTimeout(() => {
+                this.showMenu = false;
+            }, 500);
         },
 
         onTextItemEnterPressed(eventData) {
@@ -105,8 +105,8 @@ export default {
             if (!this.debug) {
                 if ('alt' in window) {
                     alt.emit('menu:onTextItemEnterPressed', this.menuId, ...eventData);
-                }     
-            } 
+                }
+            }
         },
 
         onListItemValueChange(eventData) {
@@ -115,8 +115,8 @@ export default {
             if (!this.debug) {
                 if ('alt' in window) {
                     alt.emit('menu:onListItemValueChange', this.menuId, ...eventData);
-                }     
-            } 
+                }
+            }
         },
 
         onInputItemEnterPressed(eventData) {
@@ -125,8 +125,8 @@ export default {
             if (!this.debug) {
                 if ('alt' in window) {
                     alt.emit('menu:onInputItemEnterPressed', this.menuId, ...eventData);
-                }     
-            } 
+                }
+            }
         },
 
         onCheckboxItemValueChange(eventData) {
@@ -135,8 +135,8 @@ export default {
             if (!this.debug) {
                 if ('alt' in window) {
                     alt.emit('menu:onCheckboxItemValueChange', this.menuId, ...eventData);
-                }     
-            } 
+                }
+            }
         },
 
 
@@ -184,97 +184,97 @@ export default {
             }
         },
 
-        
-    testMenu() {
-        const testData = {
-            id: 'MENUTEST_1',
-            title: 'Inventar',
-            menuSubtitle: 'Test Subtitle',
-            items: [
-                {
-                    type: 'text',
-                    leftTitle: 'Burger',
-                    rightTitle: '1x',
-                    callback: 'textItem1Callback',
-                    subtitle: 'Hier ist ein Untertitel'
-                },
-                {
-                    type: 'text',
-                    leftTitle: 'Wasser',
-                    rightTitle: '2x',
-                    callback: 'textItem2Callback',
-                    subtitle: 'Hier ist ein Untertitel2'
 
-                },
-                {
-                    type: 'input',
-                    leftTitle: 'Suche',
-                    callback: 'textItemINPUTCallback',
-                    subtitle: ''
-
-                },
-                {
-                    type: 'spacer',
-                    height: '10px',
-                    color: 'white',
-                    style: {
-                        height: '2px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                        margin: '10px 0'
+        testMenu() {
+            const testData = {
+                id: 'MENUTEST_1',
+                title: 'Inventar',
+                menuSubtitle: 'Test Subtitle',
+                items: [
+                    {
+                        type: 'text',
+                        leftTitle: 'Burger',
+                        rightTitle: '1x',
+                        callback: 'textItem1Callback',
+                        subtitle: 'Hier ist ein Untertitel'
                     },
-                    subtitle: ''
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: 'textItem2Callback',
+                        subtitle: 'Hier ist ein Untertitel2'
 
-                },
-                {
-                    type: 'checkbox',
-                    leftTitle: 'Option A',
-                    initialChecked: true,
-                    callback: 'textItemCHECKBOXCallback',
-                    subtitle: ''
+                    },
+                    {
+                        type: 'input',
+                        leftTitle: 'Suche',
+                        callback: 'textItemINPUTCallback',
+                        subtitle: ''
+
+                    },
+                    {
+                        type: 'spacer',
+                        height: '10px',
+                        color: 'white',
+                        style: {
+                            height: '2px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            margin: '10px 0'
+                        },
+                        subtitle: ''
+
+                    },
+                    {
+                        type: 'checkbox',
+                        leftTitle: 'Option A',
+                        initialChecked: true,
+                        callback: 'textItemCHECKBOXCallback',
+                        subtitle: ''
 
 
-                },
-                {
-                    type: 'list',
-                    leftTitle: 'Oberteile',
-                    numbers: [1, 2, 4, 5, 6],
-                    callback: 'textItemLISTCallback',
-                    subtitle: ''
+                    },
+                    {
+                        type: 'list',
+                        leftTitle: 'Oberteile',
+                        numbers: [1, 2, 4, 5, 6],
+                        callback: 'textItemLISTCallback',
+                        subtitle: ''
 
 
-                }
-            ],
-        };
-       
-        this.createMenu(testData);
-    },
+                    }
+                ],
+            };
+
+            this.createMenu(testData);
+        },
     },
 
     created() {
-    window.addEventListener('keydown', this.onKeyDown);
+        window.addEventListener('keydown', this.onKeyDown);
 
-    // Debug 
+        // Debug 
 
-    if (this.debug === true) {
-        this.testMenu();
-    } else {
-        if ('alt' in window) {
-            alt.on('createMenu', (data) => {
-                this.createMenu(data)
+        if (this.debug === true) {
+            this.testMenu();
+        } else {
+            if ('alt' in window) {
+                alt.on('createMenu', (data) => {
+                    this.createMenu(data)
                 }
                 );
-            alt.on('closeMenu', this.closeMenu);
+                alt.on('closeMenu', this.closeMenu);
+            }
         }
-    }
 
-        
+
     },
     unmounted() {
         window.removeEventListener('keydown', this.onKeyDown);
     },
 
     updated() {
-        if (this.showMenu) 
+        if (this.showMenu)
             this.$el.focus();
     }
 
@@ -301,7 +301,7 @@ export default {
     padding: 10px;
 
     position: fixed;
-    top: -5vw; 
+    top: -5vw;
     right: 1vw;
 }
 
@@ -339,6 +339,7 @@ export default {
     border-width: 0 0 1px 0;
     border-color: white;
 }
+
 .spacer-class {
     height: 2px;
     background-color: rgba(255, 255, 255, 0.2);
