@@ -9,6 +9,10 @@
 export default {
     name: 'TextItem',
     props: {
+        name: {
+            type: String,
+            default: "TextItem"
+        },  
         leftTitle: {
             type: String,
             default: '',
@@ -29,6 +33,7 @@ export default {
     methods: {
         onEnterKeyPressed() {
             this.$emit('enter-pressed', {
+                name: this.name,
                 leftTitle: this.leftTitle,
                 rightTitle: this.rightTitle,
                 callback: this.callback,

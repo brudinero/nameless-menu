@@ -55,7 +55,7 @@ export default {
         },
 
         debug() {
-            return false;
+            return true;
         }
     },
     methods: {

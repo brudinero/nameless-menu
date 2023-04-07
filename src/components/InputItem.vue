@@ -39,6 +39,7 @@ export default {
 
         onEnterKeyPressed() {
             this.$emit('enter-pressed', {
+                name: this.name,
                 leftTitle: this.leftTitle,
                 value: this.inputValue,
                 callback: this.callback,
