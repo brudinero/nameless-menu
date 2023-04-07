@@ -55,7 +55,7 @@ export default {
         },
 
         debug() {
-            return true;
+            return false;
         }
     },
     methods: {
@@ -255,12 +255,12 @@ export default {
 
     // Debug 
 
-    if (this.debug) {
+    if (this.debug === true) {
         this.testMenu();
     } else {
         if ('alt' in window) {
             alt.on('createMenu', (data) => {
-                this.testMenu(data)
+                this.createMenu(data)
                 }
                 );
             alt.on('closeMenu', this.closeMenu);
