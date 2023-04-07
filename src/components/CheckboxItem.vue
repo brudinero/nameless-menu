@@ -19,6 +19,11 @@ export default {
             type: Boolean,
             default: false,
         },
+
+        callback: {
+            type: String,
+            default: '',
+        }
     },
     data() {
         return {

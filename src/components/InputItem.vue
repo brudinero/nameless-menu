@@ -15,6 +15,10 @@ export default {
             type: String,
             default: '',
         },
+        callback: {
+            type: String,
+            default: ''
+        }
     },
     data() {
         return {

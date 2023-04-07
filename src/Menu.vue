@@ -6,6 +6,7 @@
         <div class="menu-subtitle">{{ menuSubtitle }}</div>
         <div v-for="(item, index) in menuItems" :key="index" class="menu-item"
             :class="{ 'focused': index === focusedIndex }">
+            <div v-if="item.type === 'spacer'" :class="spacerClass"></div>
             <text-item v-if="item.type === 'text'" :left-title="item.leftTitle" :right-title="item.rightTitle"
                 :callback="item.callback" @enter-pressed="onTextItemEnterPressed" :ref="`textItem-${index}`"></text-item>
             <list-item v-else-if="item.type === 'list'" :left-title="item.leftTitle" :numbers="item.numbers"
@@ -44,6 +45,7 @@ export default {
             menuItems: [],
             focusedIndex: 0,
             showMenu: false,
+            spacerClass: 'spacer'
         };
     },
 
@@ -70,7 +72,7 @@ export default {
                     return { ...item, refName: `listItem-${index}`, callback: item.callback };
                 }
                 if (item.type === 'checkbox') {
-                    return { ...item, refName: `checkboxItem-${index}`, callback: item.callback, onEnterKeyPressed: () => this.onCheckboxItemValueChange({ leftTitle: item.leftTitle, isChecked: item.isChecked }) };
+                    return { ...item, refName: `checkboxItem-${index}`, callback: item.callback, }; 
                 }
                 if (item.type === 'input') {
                     return { ...item, refName: `inputItem-${index}`, callback: item.callback };
@@ -78,10 +80,11 @@ export default {
                 if (item.type === 'text') {
                     const id = `text-${Date.now()}-${index}`; // eindeutige ID generieren
                     const refName = `textItem-${id}`; // ref-Name mit Typ und ID generieren
-                    return { ...item, refName, callback: item.callback, onEnterKeyPressed: () => this.onTextItemEnterPressed({ leftTitle: item.leftTitle, rightTitle: item.rightTitle, callback: item.callback, refName }) };
+                    return { ...item, refName, callback: item.callback, }; 
                 }
                 return { ...item, callback: item.callback };
             });
+
 
             this.showMenu = true;
             setTimeout(() => {
@@ -99,23 +102,41 @@ export default {
         onTextItemEnterPressed(eventData) {
             console.log(`Test item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
 
-            /*
-            if ('alt' in window) {
-                alt.emit('onTextItemEnterPressed', eventData);
-            }
-            */
+            if (!this.debug) {
+                if ('alt' in window) {
+                    alt.emit('menu:onTextItemEnterPressed', this.menuId, ...eventData);
+                }     
+            } 
         },
 
         onListItemValueChange(eventData) {
             console.log(`List item value change: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
+
+            if (!this.debug) {
+                if ('alt' in window) {
+                    alt.emit('menu:onListItemValueChange', this.menuId, ...eventData);
+                }     
+            } 
         },
 
         onInputItemEnterPressed(eventData) {
             console.log(`Input item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
+
+            if (!this.debug) {
+                if ('alt' in window) {
+                    alt.emit('menu:onInputItemEnterPressed', this.menuId, ...eventData);
+                }     
+            } 
         },
 
-        onCheckboxItemValueChange(eventData, item) {
-            console.log(`Checkbox item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
+        onCheckboxItemValueChange(eventData) {
+            console.log(`Checkbox2 item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
+
+            if (!this.debug) {
+                if ('alt' in window) {
+                    alt.emit('menu:onCheckboxItemValueChange', this.menuId, ...eventData);
+                }     
+            } 
         },
 
 
@@ -142,13 +163,6 @@ export default {
 
                 if (focusedItem.type === 'checkbox') {
                     this.$refs[focusedItem.refName][0].toggleChecked();
-
-                    this.onCheckboxItemValueChange({
-                        leftTitle: focusedItem.leftTitle,
-                        value: focusedItem.value,
-                        callback: focusedItem.callback,
-                        refName: focusedItem.refName,
-                    });
                 }
 
                 if (focusedItem.type === 'text') {
@@ -182,18 +196,33 @@ export default {
                     leftTitle: 'Burger',
                     rightTitle: '1x',
                     callback: 'textItem1Callback',
+                    subtitle: 'Hier ist ein Untertitel'
                 },
                 {
                     type: 'text',
                     leftTitle: 'Wasser',
                     rightTitle: '2x',
                     callback: 'textItem2Callback',
+                    subtitle: 'Hier ist ein Untertitel2'
 
                 },
                 {
                     type: 'input',
                     leftTitle: 'Suche',
                     callback: 'textItemINPUTCallback',
+                    subtitle: ''
+
+                },
+                {
+                    type: 'spacer',
+                    height: '10px',
+                    color: 'white',
+                    style: {
+                        height: '2px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        margin: '10px 0'
+                    },
+                    subtitle: ''
 
                 },
                 {
@@ -201,6 +230,8 @@ export default {
                     leftTitle: 'Option A',
                     initialChecked: true,
                     callback: 'textItemCHECKBOXCallback',
+                    subtitle: ''
+
 
                 },
                 {
@@ -208,6 +239,8 @@ export default {
                     leftTitle: 'Oberteile',
                     numbers: [1, 2, 4, 5, 6],
                     callback: 'textItemLISTCallback',
+                    subtitle: ''
+
 
                 }
             ],
@@ -305,5 +338,10 @@ export default {
     border-bottom: 1px solid white;
     border-width: 0 0 1px 0;
     border-color: white;
+}
+.spacer-class {
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px 0;
 }
 </style>

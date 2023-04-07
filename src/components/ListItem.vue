@@ -22,6 +22,11 @@ export default {
             type: Array,
             default: () => [],
         },
+
+        callback: {
+            type: String,
+            default: ''
+        }
     },
     data() {
         return {
