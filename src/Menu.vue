@@ -55,7 +55,7 @@ export default {
         },
 
         debug() {
-            return true;
+            return false;
         }
     },
     methods: {
@@ -103,9 +103,10 @@ export default {
             console.log(`Test item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
 
             if (!this.debug) {
-                if ('alt' in window) {
-                    alt.emit('menu:onTextItemEnterPressed', this.menuId, ...eventData);
-                }
+               
+                alt.emit('menu:onTextItemEnterPressed', this.menuId, eventData);
+                
+                
             }
         },
 
@@ -114,7 +115,7 @@ export default {
 
             if (!this.debug) {
                 if ('alt' in window) {
-                    alt.emit('menu:onListItemValueChange', this.menuId, ...eventData);
+                    alt.emit('menu:onListItemValueChange', this.menuId, eventData);
                 }
             }
         },

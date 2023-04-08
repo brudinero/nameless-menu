@@ -5,6 +5,8 @@ module.exports = defineConfig({
   publicPath: '',
   productionSourceMap: false,
   filenameHashing: false,
+  css: { extract: true },
+  
 
   configureWebpack: {
     devServer: {
