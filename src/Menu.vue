@@ -230,17 +230,6 @@ export default {
 
                     },
                     {
-                        type: 'spacer',
-                        height: '10px',
-                        color: 'white',
-                        style: {
-                            height: '2px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                            margin: '10px 0'
-                        },
-
-                    },
-                    {
                         type: 'checkbox',
                         leftTitle: 'Option A',
                         initialChecked: true,
@@ -296,42 +285,54 @@ export default {
 
 
 
-
 .menu {
+    --menu-border: rgba(255, 255, 255, 0.08);
+    --menu-bg: linear-gradient(
+        45deg,
+        rgba(10, 20, 28, 0.3) 0%,
+        rgba(10, 20, 28, 0.4) 100%
+    );
+    --item-border: rgba(255, 255, 255, 0.1);
+    --item-color: #000000;
+    --item-bg-hover: rgba(255, 255, 255, 0.1);
+    background: var(--menu-bg);
+    backdrop-filter: blur(10px);
+    animation: menuAnimation 0.4s 0s both;
+    transform-origin: right;
+    list-style: none;
+    flex-direction: column;
+    z-index: 999999999;
+    box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.04), 0 10px 8px rgba(0, 0, 0, 0.05), 0 15px 15px rgba(0, 0, 0, 0.06), 0 30px 30px rgba(0, 0, 0, 0.07), 0 70px 65px rgba(0, 0, 0, 0.09);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+    padding: 2vw;
+    border-radius: 1vw;
     width: 400px;
-    background-color: rgba(0, 0, 0, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(196, 18, 18, 0.3);
-  /*  transform: perspective(2400px) rotateY(-15deg); */
-
-    transition: transform 0.5s ease;
-    transform: perspective(2400px) translateX(100%); 
-
     margin: 10% auto;
     padding: 10px;
-
     position: fixed;
     top: -5vw;
     right: 1vw;
-
     font-family: 'Roboto Mono', monospace;
-
-border: 1px solid #ccc;
 }
+.menu:focus {
 
+    outline: none;
+}
 .menu.show {
     transform: perspective(2400px) translateX(0%);
 }
 
 .menu-subtitle {
-    color: white;
-    border-bottom: 1px solid white;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
     margin-bottom: 20px;
     text-align: center;
 }
 
 .menu h1 {
-    color: white;
+    color: rgb(0, 0, 0);
     margin: 0 0 10px;
     font-size: 28px;
     text-align: center;
@@ -339,24 +340,28 @@ border: 1px solid #ccc;
 
 
 .menu-item {
-    margin-bottom: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-bottom: 1px solid white;
-    border-width: 0 0 1px 0;
-    border-color: white;
-    transition: all 0.3s ease;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--item-color);
+  background: 0;
+  border: 0;
+  white-space: nowrap;
+  border-radius: 4px;
+  padding: 6px 24px 6px 7px;
+  font-size: 20px;
+  animation: menuItemAnimation 0.2s 0s both;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+
+.menu-item-label {
+  margin-right: 10px; /* optional spacing between label and input */
 }
 
 
 
 .focused {
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: var(--item-bg-hover);
 
 }
 
@@ -365,5 +370,28 @@ border: 1px solid #ccc;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.2);
     margin: 10px 0;
+}
+
+@keyframes menuAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    height: var(--height);
+    opacity: 1;
+    border-radius: 8px;
+    transform: scale(1);
+  }
+} 
+@keyframes menuItemAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>

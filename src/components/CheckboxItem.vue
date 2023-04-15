@@ -49,4 +49,11 @@ export default {
     display: flex;
     justify-content: space-between;
 }
+.input[type="checkbox"]:checked {
+  color: green;
+}
+.right{
+
+    color: brown;
+}
 </style>

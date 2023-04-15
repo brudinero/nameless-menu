@@ -58,4 +58,17 @@ export default {
     display: flex;
     justify-content: space-between;
 }
+.input-field {
+    background: 0;
+
+  white-space: nowrap;
+  border: none;
+  outline: 2px solid rgba(10, 20, 28, 0.2);
+  color: #e7e7e7;
+  text-align: left;
+  align-items: center;
+  animation: menuItemAnimation 0.2s 0s both;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
 </style>
