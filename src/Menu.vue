@@ -78,9 +78,7 @@ export default {
                     return { ...item, refName: `inputItem-${index}`, callback: item.callback };
                 }
                 if (item.type === 'text') {
-                    const id = `text-${Date.now()}-${index}`; // eindeutige ID generieren
-                    const refName = `textItem-${id}`; // ref-Name mit Typ und ID generieren
-                    return { ...item, refName, callback: item.callback, };
+                    return { ...item, refName: `textItem-${index}`, callback: item.callback, };
                 }
                 return { ...item, callback: item.callback };
             });
@@ -101,6 +99,8 @@ export default {
 
         onTextItemEnterPressed(eventData) {
             console.log(`Test item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
+
+            console.log(eventData.submenuitems);
 
             if (!this.debug) {
                 if ('alt' in window) {
@@ -196,22 +196,37 @@ export default {
                         type: 'text',
                         leftTitle: 'Burger',
                         rightTitle: '1x',
-                        callback: 'textItem1Callback',
-                        subtitle: 'Hier ist ein Untertitel'
+                        callback: '',                     
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
                     },
                     {
                         type: 'text',
                         leftTitle: 'Wasser',
                         rightTitle: '2x',
-                        callback: 'textItem2Callback',
-                        subtitle: 'Hier ist ein Untertitel2'
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
 
                     },
                     {
                         type: 'input',
                         leftTitle: 'Suche',
-                        callback: 'textItemINPUTCallback',
-                        subtitle: ''
+                        callback: '',
 
                     },
                     {
@@ -223,15 +238,13 @@ export default {
                             backgroundColor: 'rgba(255, 255, 255, 0.2)',
                             margin: '10px 0'
                         },
-                        subtitle: ''
 
                     },
                     {
                         type: 'checkbox',
                         leftTitle: 'Option A',
                         initialChecked: true,
-                        callback: 'textItemCHECKBOXCallback',
-                        subtitle: ''
+                        callback: '',
 
 
                     },
@@ -239,10 +252,7 @@ export default {
                         type: 'list',
                         leftTitle: 'Oberteile',
                         numbers: [1, 2, 4, 5, 6],
-                        callback: 'textItemLISTCallback',
-                        subtitle: ''
-
-
+                        callback: '',
                     }
                 ],
             };
@@ -283,20 +293,19 @@ export default {
 </script>
 
 <style scoped>
-.focused {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.5);
-}
+
+
+
 
 .menu {
     width: 400px;
-    background-color: rgba(16, 16, 16, 0.85);
+    background-color: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    /*transform: perspective(2400px) rotateY(-15deg); */
+    box-shadow: 0 0 10px rgba(196, 18, 18, 0.3);
+  /*  transform: perspective(2400px) rotateY(-15deg); */
 
     transition: transform 0.5s ease;
-    transform: perspective(2400px) translateX(100%);
+    transform: perspective(2400px) translateX(100%); 
 
     margin: 10% auto;
     padding: 10px;
@@ -304,6 +313,10 @@ export default {
     position: fixed;
     top: -5vw;
     right: 1vw;
+
+    font-family: 'Roboto Mono', monospace;
+
+border: 1px solid #ccc;
 }
 
 .menu.show {
@@ -324,9 +337,6 @@ export default {
     text-align: center;
 }
 
-.menu-subtitle.focused {
-    background-color: rgba(255, 255, 255, 0.1);
-}
 
 .menu-item {
     margin-bottom: 5px;
@@ -339,7 +349,17 @@ export default {
     border-bottom: 1px solid white;
     border-width: 0 0 1px 0;
     border-color: white;
+    transition: all 0.3s ease;
 }
+
+
+
+.focused {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+}
+
 
 .spacer-class {
     height: 2px;

@@ -24,10 +24,15 @@ export default {
         callback: {
             type: String, 
             default: '',
+        },
+        submenuitems: {
+            type: Array,
+            default: null,
         }
     },
     data() {
         return {
+        
         };
     },
     methods: {
@@ -38,16 +43,10 @@ export default {
                 rightTitle: this.rightTitle,
                 callback: this.callback,
                 refName: this.$vnode.data.ref,
+                submenuitems: this.submenuitems
             });
         },
     },
-    mounted() {
-        this.$el.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                this.onEnterKeyPressed();
-            }
-        });
-    }
 };
 </script>
 
