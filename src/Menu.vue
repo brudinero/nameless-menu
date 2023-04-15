@@ -289,8 +289,8 @@ export default {
     --menu-border: rgba(255, 255, 255, 0.08);
     --menu-bg: linear-gradient(
         45deg,
-        rgba(10, 20, 28, 0.3) 0%,
-        rgba(10, 20, 28, 0.4) 100%
+        rgba(10, 20, 28, 0.65) 0%,
+        rgba(10, 20, 28, 0.8) 100%
     );
     --item-border: rgba(255, 255, 255, 0.1);
     --item-color: #000000;
@@ -321,7 +321,8 @@ export default {
     outline: none;
 }
 .menu.show {
-    transform: perspective(2400px) translateX(0%);
+    animation: menuAnimation 0.4s 0s both;
+    animation-direction: reverse;
 }
 
 .menu-subtitle {
@@ -373,6 +374,18 @@ export default {
 }
 
 @keyframes menuAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    height: var(--height);
+    opacity: 1;
+    border-radius: 8px;
+    transform: scale(1);
+  }
+} 
+@keyframes menuAnimationclose {
   0% {
     opacity: 0;
     transform: scale(0.5);
