@@ -55,7 +55,7 @@ export default {
         },
 
         debug() {
-            return false;
+            return true;
         }
     },
     methods: {
@@ -103,10 +103,10 @@ export default {
             console.log(`Test item enter pressed: ${JSON.stringify({ ...eventData, menuId: this.menuId })}`);
 
             if (!this.debug) {
-               if ('alt' in window) {
-                alt.emit('menu:onTextItemEnterPressed', this.menuId, eventData);
-                
-               }
+                if ('alt' in window) {
+                    alt.emit('menu:onTextItemEnterPressed', this.menuId, eventData);
+
+                }
             }
         },
 
