@@ -64,7 +64,7 @@ export default {
   white-space: nowrap;
   border: none;
   outline: 2px solid rgba(10, 20, 28, 0.2);
-  color: #e7e7e7;
+  color: rgb(10, 20, 28);
   text-align: left;
   align-items: center;
   animation: menuItemAnimation 0.2s 0s both;

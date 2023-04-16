@@ -5,7 +5,7 @@
         <h1>{{ menuTitle }}</h1>
         <div class="menu-subtitle">{{ menuSubtitle }}</div>
         <div v-for="(item, index) in menuItems" :key="index" class="menu-item"
-            :class="{ 'focused': index === focusedIndex }">
+            :class="{ 'focused': index === focusedIndex }" >
             <div v-if="item.type === 'spacer'" :class="spacerClass"></div>
             <text-item v-if="item.type === 'text'" :left-title="item.leftTitle" :right-title="item.rightTitle"
                 :callback="item.callback" @enter-pressed="onTextItemEnterPressed" :ref="`textItem-${index}`"></text-item>
@@ -224,6 +224,262 @@ export default {
 
                     },
                     {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
+                        type: 'text',
+                        leftTitle: 'Wasser',
+                        rightTitle: '2x',
+                        callback: '',
+                        submenuitems: [
+                            {
+                                type: 'text',
+                                leftTitle: 'Burger',
+                                rightTitle: '1x',
+                                callback: '',
+                                subtitle: ''
+                            }
+                        ]
+
+                    },
+                    {
                         type: 'input',
                         leftTitle: 'Suche',
                         callback: '',
@@ -286,24 +542,25 @@ export default {
 
 
 .menu {
-    --menu-border: rgba(255, 255, 255, 0.08);
     --menu-bg: linear-gradient(
-        45deg,
-        rgba(10, 20, 28, 0.65) 0%,
-        rgba(10, 20, 28, 0.8) 100%
-    );
-    --item-border: rgba(255, 255, 255, 0.1);
-    --item-color: #000000;
-    --item-bg-hover: rgba(255, 255, 255, 0.1);
+    45deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 1.0) 100%
+     );
+    --menu-border: rgba(0, 0, 0, 0.08);
+    --item-border: rgba(0, 0, 0, 0.1);
+    --item-color: rgb(10, 20, 28);
+    --item-bg-hover: rgba(10, 20, 28, 0.09);
     background: var(--menu-bg);
-    backdrop-filter: blur(10px);
-    animation: menuAnimation 0.4s 0s both;
-    transform-origin: right;
+    backdrop-filter: blur(5px);
+    transition: transform 0.5s ease;
+     transform: perspective(2400px) translateX(100%); 
+     
     list-style: none;
     flex-direction: column;
     z-index: 999999999;
     box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.04), 0 10px 8px rgba(0, 0, 0, 0.05), 0 15px 15px rgba(0, 0, 0, 0.06), 0 30px 30px rgba(0, 0, 0, 0.07), 0 70px 65px rgba(0, 0, 0, 0.09);
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     z-index: 2;
     pointer-events: none;
     padding: 2vw;
@@ -315,25 +572,26 @@ export default {
     top: -5vw;
     right: 1vw;
     font-family: 'Roboto Mono', monospace;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 .menu:focus {
 
     outline: none;
 }
 .menu.show {
-    animation: menuAnimation 0.4s 0s both;
-    animation-direction: reverse;
+    transform: perspective(2400px) translateX(0%);
 }
 
 .menu-subtitle {
-    color: rgb(0, 0, 0);
-    border-bottom: 1px solid rgb(0, 0, 0);
+    color: rgb(10, 20, 28);
+    border-bottom: 1px solid rgb(10, 20, 28);
     margin-bottom: 20px;
     text-align: center;
 }
 
 .menu h1 {
-    color: rgb(0, 0, 0);
+    color: rgb(10, 20, 28);
     margin: 0 0 10px;
     font-size: 28px;
     text-align: center;
@@ -353,6 +611,7 @@ export default {
   animation: menuItemAnimation 0.2s 0s both;
   font-family: "Inter", sans-serif;
   cursor: pointer;
+
 }
 
 .menu-item-label {
@@ -386,11 +645,11 @@ export default {
   }
 } 
 @keyframes menuAnimationclose {
-  0% {
+  100% {
     opacity: 0;
     transform: scale(0.5);
   }
-  100% {
+  0% {
     height: var(--height);
     opacity: 1;
     border-radius: 8px;
@@ -406,5 +665,8 @@ export default {
     opacity: 1;
     transform: translateX(0);
   }
+}
+.menu::-webkit-scrollbar {
+  display: none;
 }
 </style>
