@@ -1,11 +1,12 @@
 
 
 <template>
+    
     <div v-if="showMenu" class="menu" tabindex="0">
         <h1>{{ menuTitle }}</h1>
         <div class="menu-subtitle">{{ menuSubtitle }}</div>
         <div v-for="(item, index) in menuItems" :key="index" class="menu-item"
-            :class="{ 'focused': index === focusedIndex }" >
+            :class="{ 'focused': index === focusedIndex }">
             <div v-if="item.type === 'spacer'" :class="spacerClass"></div>
             <text-item v-if="item.type === 'text'" :left-title="item.leftTitle" :right-title="item.rightTitle"
                 :callback="item.callback" @enter-pressed="onTextItemEnterPressed" :ref="`textItem-${index}`"></text-item>
@@ -28,6 +29,7 @@ import TextItem from './components/TextItem.vue';
 import ListItem from './components/ListItem.vue';
 import InputItem from './components/InputItem.vue';
 import CheckboxItem from './components/CheckboxItem.vue';
+import testData from './assets/testdata.js';
 
 export default {
     name: 'MenuComponent',
@@ -187,320 +189,8 @@ export default {
 
 
         testMenu() {
-            const testData = {
-                id: 'MENUTEST_1',
-                title: 'Inventar',
-                menuSubtitle: 'Test Subtitle',
-                items: [
-                    {
-                        type: 'text',
-                        leftTitle: 'Burger',
-                        rightTitle: '1x',
-                        callback: '',                     
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'text',
-                        leftTitle: 'Wasser',
-                        rightTitle: '2x',
-                        callback: '',
-                        submenuitems: [
-                            {
-                                type: 'text',
-                                leftTitle: 'Burger',
-                                rightTitle: '1x',
-                                callback: '',
-                                subtitle: ''
-                            }
-                        ]
-
-                    },
-                    {
-                        type: 'input',
-                        leftTitle: 'Suche',
-                        callback: '',
-
-                    },
-                    {
-                        type: 'checkbox',
-                        leftTitle: 'Option A',
-                        initialChecked: true,
-                        callback: '',
-
-
-                    },
-                    {
-                        type: 'list',
-                        leftTitle: 'Oberteile',
-                        numbers: [1, 2, 4, 5, 6],
-                        callback: '',
-                    }
-                ],
-            };
+            
+         
 
             this.createMenu(testData);
         },
@@ -553,14 +243,13 @@ export default {
     --item-bg-hover: rgba(10, 20, 28, 0.09);
     background: var(--menu-bg);
     backdrop-filter: blur(5px);
-    transition: transform 0.5s ease;
+    transition: transform 0.2s ease;
      transform: perspective(2400px) translateX(100%); 
      
     list-style: none;
     flex-direction: column;
-    z-index: 999999999;
     box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.04), 0 10px 8px rgba(0, 0, 0, 0.05), 0 15px 15px rgba(0, 0, 0, 0.06), 0 30px 30px rgba(0, 0, 0, 0.07), 0 70px 65px rgba(0, 0, 0, 0.09);
-    /* transform: translate(-50%, -50%); */
+     transform: translate(-50%, -50%); 
     z-index: 2;
     pointer-events: none;
     padding: 2vw;
@@ -572,8 +261,14 @@ export default {
     top: -5vw;
     right: 1vw;
     font-family: 'Roboto Mono', monospace;
-    max-height: 500px;
-    overflow-y: scroll;
+
+    max-height: 600px;
+
+    overflow-y:scroll;
+}
+.menuContainer {
+   
+    transform: perspective(2400px) translateX(0%);
 }
 .menu:focus {
 
