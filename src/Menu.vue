@@ -57,7 +57,7 @@ export default {
         },
 
         debug() {
-            return true;
+            return false;
         }
     },
     methods: {
@@ -248,8 +248,9 @@ export default {
      
     list-style: none;
     flex-direction: column;
+    z-index: 999999999;
     box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.04), 0 10px 8px rgba(0, 0, 0, 0.05), 0 15px 15px rgba(0, 0, 0, 0.06), 0 30px 30px rgba(0, 0, 0, 0.07), 0 70px 65px rgba(0, 0, 0, 0.09);
-     transform: translate(-50%, -50%); 
+    /* transform: translate(-50%, -50%); */
     z-index: 2;
     pointer-events: none;
     padding: 2vw;
@@ -262,14 +263,11 @@ export default {
     right: 1vw;
     font-family: 'Roboto Mono', monospace;
 
-    max-height: 600px;
+    max-height: 575px;
 
-    overflow-y:scroll;
+    overflow-y:auto;
 }
-.menuContainer {
-   
-    transform: perspective(2400px) translateX(0%);
-}
+
 .menu:focus {
 
     outline: none;
@@ -283,6 +281,7 @@ export default {
     border-bottom: 1px solid rgb(10, 20, 28);
     margin-bottom: 20px;
     text-align: center;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .menu h1 {
@@ -290,6 +289,7 @@ export default {
     margin: 0 0 10px;
     font-size: 28px;
     text-align: center;
+
 }
 
 
@@ -304,9 +304,8 @@ export default {
   padding: 6px 24px 6px 7px;
   font-size: 20px;
   animation: menuItemAnimation 0.2s 0s both;
-  font-family: "Inter", sans-serif;
   cursor: pointer;
-
+  font-family: 'Roboto Mono', monospace;
 }
 
 .menu-item-label {

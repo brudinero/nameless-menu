@@ -67,7 +67,7 @@ export default {
     text-align: right;
     align-items: center;
     animation: menuItemAnimation 0.2s 0s both;
-    font-family: "Inter", sans-serif;
+    font-family: 'Roboto Mono', monospace;
     cursor: pointer;
 }
 </style>
