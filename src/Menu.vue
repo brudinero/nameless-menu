@@ -249,7 +249,7 @@ export default {
     list-style: none;
     flex-direction: column;
     box-shadow: 0 0 0 1px var(--menu-border), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.04), 0 10px 8px rgba(0, 0, 0, 0.05), 0 15px 15px rgba(0, 0, 0, 0.06), 0 30px 30px rgba(0, 0, 0, 0.07), 0 70px 65px rgba(0, 0, 0, 0.09);
-     transform: translate(-50%, -50%); 
+     /*transform: translate(-50%, -50%); */
     z-index: 2;
     pointer-events: none;
     padding: 2vw;
