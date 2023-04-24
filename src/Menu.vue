@@ -264,7 +264,7 @@ export default {
 
     max-height: 575px;
 
-    overflow-y:auto;
+    overflow-y:scroll;
 }
 
 .menu:focus {
