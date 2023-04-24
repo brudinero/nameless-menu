@@ -6,7 +6,6 @@ module.exports = defineConfig({
   productionSourceMap: false,
   filenameHashing: false,
   css: { extract: true },
-  
 
   configureWebpack: {
     devServer: {
@@ -17,6 +16,12 @@ module.exports = defineConfig({
       port: 8080,
       allowedHosts: 'auto',
     },
+  },
+
+  pluginOptions: {
+    vuetify: {
+			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+		}
   }
 })
 
